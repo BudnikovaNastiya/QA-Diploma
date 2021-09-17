@@ -37,5 +37,6 @@
   - для запуска под PostgreSQL использовать команду из корневой директории
 `gradlew -Ddb.url=jdbc:postgresql://localhost:5432/app clean test`
     
-- для получения отчета (Allure) использовать команду `gradlew allureServe` 
+- для получения отчета (Allure) использовать команду `gradlew allureServe`
+- Можно сгенерировать файлы отчетов командой `gradlew allureReport` (файлы будут помещены в каталог `./build/reports/allure-report)`, в каталоге `./build/reports/tests/test` находятся отчеты, сгенерированные Gradle.
 - после окончания тестов завершить работу приложения (Ctrl+C), остановить контейнеры командой `docker-compose down`

@@ -6,6 +6,9 @@ import ru.netology.data.Card;
 import ru.netology.data.DataGenerator;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.*;
+import ru.netology.data.DbUtils;
+
+import java.sql.SQLException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -29,6 +32,8 @@ public class BuyingTripApiTest {
     void shouldNotSendPaymentRequestWithIncorrectName() {
         int statusCode = ApiUtils.getRequestStatusCode(invalidHolderCard, "/api/v1/pay");
         assertNotEquals(200, statusCode);
+
+
     }
 
     @Test

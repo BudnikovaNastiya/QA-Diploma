@@ -7,11 +7,15 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 import ru.netology.data.Card;
 import ru.netology.data.DataGenerator;
+import ru.netology.data.DbUtils;
 import ru.netology.page.CreditPage;
 import ru.netology.page.PaymentPage;
 import ru.netology.page.StartPage;
 
+import java.sql.SQLException;
+
 import static com.codeborne.selenide.Selenide.open;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
@@ -64,6 +68,7 @@ public class BuyingTripUiTest {
         paymentPage.fillData(expiredCard);
         assertTrue(paymentPage.inputInvalidIsVisible(),"Должен показывать сообщение об ошибке, если срок карты истек, страница оплаты");
     }
+
 
     @Test
     @DisplayName("Должен показывать сообщение об ошибке, если срок карты истек, страница кредита")

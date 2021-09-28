@@ -7,15 +7,11 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 import ru.netology.data.Card;
 import ru.netology.data.DataGenerator;
-import ru.netology.data.DbUtils;
 import ru.netology.page.CreditPage;
 import ru.netology.page.PaymentPage;
 import ru.netology.page.StartPage;
 
-import java.sql.SQLException;
-
 import static com.codeborne.selenide.Selenide.open;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 

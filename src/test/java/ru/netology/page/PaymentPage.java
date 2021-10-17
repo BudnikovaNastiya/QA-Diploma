@@ -1,7 +1,7 @@
 package ru.netology.page;
 
 import com.codeborne.selenide.SelenideElement;
-import ru.netology.data.Card;
+import ru.netology.data.DataHelper;
 
 import static com.codeborne.selenide.Condition.exactText;
 import static com.codeborne.selenide.Condition.text;
@@ -11,6 +11,7 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 
 public class PaymentPage {
+
     private SelenideElement heading = $$("h3").find(text("Оплата по карте"));
     private SelenideElement cardNumberField = $(byText("Номер карты")).parent().$(".input__control");
     private SelenideElement monthField = $(byText("Месяц")).parent().$(".input__control");
@@ -20,19 +21,23 @@ public class PaymentPage {
     private SelenideElement continueButton = $$("button").find(exactText("Продолжить"));
     private SelenideElement notificationOK = $(".notification_status_ok");
     private SelenideElement notificationError = $(".notification_status_error");
-    private SelenideElement inputInvalid = $(".input__sub");
+    private SelenideElement cardNumberFieldWarning = $("fieldset > div:nth-child(1) > span > span > span.input__sub");
+    private SelenideElement monthFieldWarning = $("div:nth-child(2) > span > span:nth-child(1) > span > span > span.input__sub");
+    private SelenideElement yearFieldWarning = $("div:nth-child(2) > span > span:nth-child(2) > span > span > span.input__sub");
+    private SelenideElement ownerFieldWarning = $("div:nth-child(3) > span > span:nth-child(1) > span > span > span.input__sub");
+    private SelenideElement cvcFieldWarning = $("div:nth-child(3) > span > span:nth-child(2) > span > span > span.input__sub");
+
+    public void enterCardInfo(DataHelper.CardInfo cardInfo) {
+        cardNumberField.setValue(cardInfo.getCardNumber());
+        monthField.setValue(cardInfo.getMonth());
+        yearField.setValue(cardInfo.getYear());
+        ownerField.setValue(cardInfo.getOwner());
+        cvcField.setValue(cardInfo.getCvc());
+        continueButton.click();
+    }
 
     public PaymentPage() {
         heading.shouldBe(visible);
-    }
-
-    public void fillData(Card card) {
-        cardNumberField.setValue(card.getNumber());
-        monthField.setValue(card.getMonth());
-        yearField.setValue(card.getYear());
-        ownerField.setValue(card.getHolder());
-        cvcField.setValue(card.getCvc());
-        continueButton.click();
     }
 
     public void notificationOkIsVisible() {
@@ -43,8 +48,55 @@ public class PaymentPage {
         notificationError.waitUntil(visible, 12000);
     }
 
-    public boolean inputInvalidIsVisible() {
-        return inputInvalid.isDisplayed();
+    public void checkInvalidCardNumber() {
+        cardNumberFieldWarning.shouldHave(text("Неверный формат"));
     }
 
+    public void checkInvalidMonth() {
+        monthFieldWarning.shouldHave(text("Неверный формат"));
+    }
+
+    public void checkInvalidYear() {
+        yearFieldWarning.shouldHave(text("Неверный формат"));
+    }
+
+    public void checkInvalidOwner() {
+        ownerFieldWarning.shouldHave(text("Неверный формат"));
+    }
+
+    public void checkInvalidCvc() {
+        cvcFieldWarning.shouldHave(text("Неверный формат"));
+    }
+
+    public void checkEmptyCardNumberFieldMessage() {
+        cardNumberFieldWarning.shouldHave(text("Неверный формат"));
+    }
+
+    public void checkEmptyMonthFieldMessage() {
+        monthFieldWarning.shouldHave(text("Неверный формат"));
+    }
+
+    public void checkEmptyYearFieldMessage() {
+        yearFieldWarning.shouldHave(text("Неверный формат"));
+    }
+
+    public void checkEmptyOwnerFieldMessage() {
+        ownerFieldWarning.shouldHave(text("Поле обязательно для заполнения"));
+    }
+
+    public void checkEmptyCvcFieldMessage() {
+        cvcFieldWarning.shouldHave(text("Неверный формат"));
+    }
+
+    public void checkExpiredYearMessage() {
+        yearFieldWarning.shouldHave(text("Истёк срок действия карты"));
+    }
+
+    public void checkExpiredMonthMessage() {
+        monthFieldWarning.shouldHave(text("Неверно указан срок действия карты"));
+    }
+
+    public void checkInvalidExpirationDate() {
+        yearFieldWarning.shouldHave(text("Неверно указан срок действия карты"));
+    }
 }

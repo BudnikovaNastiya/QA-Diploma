@@ -11,9 +11,9 @@ import java.sql.SQLException;
 public class DbHelper {
 
     public static Connection getConnection() throws SQLException {
-        String url = System.getProperty("url");
-        String username = System.getProperty("username");
-        String password = System.getProperty("password");
+        String url = System.getProperty("db.url");
+        String username = System.getProperty("db.user");
+        String password = System.getProperty("db.password");
         try {
             return DriverManager.getConnection(url, username, password);
         } catch (SQLException err) {

@@ -17,10 +17,10 @@ public class DashboardPage {
         return new PaymentPage();
     }
 
-    public PaymentPage payByCreditCard() {
+    public CreditPage payByCreditCard() {
         creditButton.click();
         payCredit.waitUntil(enabled, 15000);
-        return new PaymentPage();
+        return new CreditPage();
     }
 
 }

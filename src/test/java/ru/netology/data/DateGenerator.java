@@ -35,12 +35,24 @@ public class DateGenerator {
         return faker.name().fullName();
     }
 
+    protected static String getInvalidOwner123() { return "123"; }
+
+    protected static String getInvalidOwnerSpecialCharacters() { return "!@#"; }
+
     protected static String getValidCvc() {
         return "111";
     }
 
-    protected static String getInvalidCvc() {
+    protected static String getInvalidCvc000() {
+        return "000";
+    }
+
+    protected static String getInvalidCvc11() {
         return "11";
+    }
+
+    protected static String getInvalidCvc1() {
+        return "1";
     }
 
     @Value
@@ -64,12 +76,12 @@ public class DateGenerator {
     }
 
     protected Year getInvalidExpirationDate() {
-        LocalDate newYear = today.plusYears(10);
+        LocalDate newYear = today.plusYears(6);
         return new Year(yearFormatter.format(newYear));
     }
 
     protected Year getInvalidYear() {
-        return new Year("00");
+        return new Year("0");
     }
 
     @Value
@@ -87,8 +99,13 @@ public class DateGenerator {
         return new Month(monthFormatter.format(newMonth));
     }
 
-    protected Month getInvalidMonth() {
+    protected Month getInvalidMonth13() {
         return new Month("13");
     }
-
+    protected Month getInvalidMonth0() {
+        return new Month("0");
+    }
+    protected Month getInvalidMonth00() {
+        return new Month("00");
+    }
 }

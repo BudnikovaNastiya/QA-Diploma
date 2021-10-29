@@ -28,7 +28,7 @@ public class DbHelper {
         val deleteOrderEntity = "DELETE FROM order_entity";
         val deletePaymentEntity = "DELETE FROM payment_entity";
         val runner = new QueryRunner();
-        try (val conn = getConnection();
+        try (val conn = getConnection()
         ) {
             runner.update(conn, deleteCreditRequest);
             runner.update(conn, deleteOrderEntity);

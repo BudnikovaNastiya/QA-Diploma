@@ -5,15 +5,6 @@ import lombok.Value;
 public class DataHelper {
     static DateGenerator dateGenerator = new DateGenerator();
 
-    @Value
-    public static class CardInfo {
-        String cardNumber;
-        String year;
-        String month;
-        String owner;
-        String cvc;
-    }
-
     public static CardInfo getApprovedCardInformation() {
         return new CardInfo(DateGenerator.getApprovedCardNumber(), dateGenerator.getValidExpirationDate().getYear(), dateGenerator.getValidMonth().getMonth(), DateGenerator.getValidOwner(), DateGenerator.getValidCvc());
     }
@@ -24,6 +15,10 @@ public class DataHelper {
 
     public static CardInfo getInvalidCardInformation() {
         return new CardInfo(DateGenerator.getInvalidCardNumber(), dateGenerator.getValidExpirationDate().getYear(), dateGenerator.getValidMonth().getMonth(), DateGenerator.getValidOwner(), DateGenerator.getValidCvc());
+    }
+
+    public static CardInfo getInvalidCardInformation43() {
+        return new CardInfo(DateGenerator.getInvalidCardNumber43(), dateGenerator.getValidExpirationDate().getYear(), dateGenerator.getValidMonth().getMonth(), DateGenerator.getValidOwner(), DateGenerator.getValidCvc());
     }
 
     public static CardInfo getExpiredMonthCardInformation() {
@@ -43,51 +38,61 @@ public class DataHelper {
     }
 
     public static CardInfo getEmptyNumberCardInformation() {
-        return new CardInfo(" ",  dateGenerator.getValidExpirationDate().getYear(), dateGenerator.getValidMonth().getMonth(), DateGenerator.getValidOwner(), DateGenerator.getValidCvc());
+        return new CardInfo(" ", dateGenerator.getValidExpirationDate().getYear(), dateGenerator.getValidMonth().getMonth(), DateGenerator.getValidOwner(), DateGenerator.getValidCvc());
     }
+
     public static CardInfo getEmptyYearCardInformation() {
         return new CardInfo(DateGenerator.getApprovedCardNumber(), " ", dateGenerator.getValidMonth().getMonth(), DateGenerator.getValidOwner(), DateGenerator.getValidCvc());
     }
+
     public static CardInfo getEmptyMonthCardInformation() {
         return new CardInfo(DateGenerator.getApprovedCardNumber(), dateGenerator.getValidExpirationDate().getYear(), " ", DateGenerator.getValidOwner(), DateGenerator.getValidCvc());
     }
+
     public static CardInfo getEmptyOwnerCardInformation() {
-        return new CardInfo(DateGenerator.getApprovedCardNumber(),dateGenerator.getValidExpirationDate().getYear(), dateGenerator.getValidMonth().getMonth(), " ", DateGenerator.getValidCvc());
+        return new CardInfo(DateGenerator.getApprovedCardNumber(), dateGenerator.getValidExpirationDate().getYear(), dateGenerator.getValidMonth().getMonth(), " ", DateGenerator.getValidCvc());
     }
+
     public static CardInfo getEmptyCvcCardInformation() {
         return new CardInfo(DateGenerator.getApprovedCardNumber(), dateGenerator.getValidExpirationDate().getYear(), dateGenerator.getValidMonth().getMonth(), DateGenerator.getValidOwner(), " ");
     }
 
     public static CardInfo getValidCardNumberWithInvalidYear0() {
-        return new CardInfo(DateGenerator.getApprovedCardNumber(), dateGenerator.getInvalidYear().getYear(), dateGenerator.getValidMonth().getMonth(), DateGenerator.getValidOwner(), DateGenerator.getValidCvc());
+        return new CardInfo(DateGenerator.getApprovedCardNumber(), dateGenerator.getInvalidYear0().getYear(), dateGenerator.getValidMonth().getMonth(), DateGenerator.getValidOwner(), DateGenerator.getValidCvc());
+    }
+
+    public static CardInfo getValidCardNumberWithInvalidYear00() {
+        return new CardInfo(DateGenerator.getApprovedCardNumber(), dateGenerator.getInvalidYear00().getYear(), dateGenerator.getValidMonth().getMonth(), DateGenerator.getValidOwner(), DateGenerator.getValidCvc());
     }
 
     public static CardInfo getValidCardNumberInvalidMonth13() {
         return new CardInfo(DateGenerator.getApprovedCardNumber(), dateGenerator.getValidExpirationDate().getYear(), dateGenerator.getInvalidMonth13().getMonth(), DateGenerator.getInvalidOwner(), DateGenerator.getValidCvc());
     }
+
     public static CardInfo getValidCardNumberInvalidMonth0() {
         return new CardInfo(DateGenerator.getApprovedCardNumber(), dateGenerator.getValidExpirationDate().getYear(), dateGenerator.getInvalidMonth0().getMonth(), DateGenerator.getInvalidOwner(), DateGenerator.getValidCvc());
     }
 
-    public static CardInfo getValidCardNumberInvalidMonth00 () {
+    public static CardInfo getValidCardNumberInvalidMonth00() {
         return new CardInfo(DateGenerator.getApprovedCardNumber(), dateGenerator.getValidExpirationDate().getYear(), dateGenerator.getInvalidMonth00().getMonth(), DateGenerator.getInvalidOwner(), DateGenerator.getValidCvc());
     }
 
     public static CardInfo getValidCardNumberWithInvalidOwner() {
-        return new CardInfo(DateGenerator.getApprovedCardNumber(),dateGenerator.getValidExpirationDate().getYear(), dateGenerator.getValidMonth().getMonth(), DateGenerator.getInvalidOwner(), DateGenerator.getValidCvc());
+        return new CardInfo(DateGenerator.getApprovedCardNumber(), dateGenerator.getValidExpirationDate().getYear(), dateGenerator.getValidMonth().getMonth(), DateGenerator.getInvalidOwner(), DateGenerator.getValidCvc());
     }
 
     public static CardInfo getValidCardNumberWithInvalidOwnerSpecialCharacters() {
-        return new CardInfo(DateGenerator.getApprovedCardNumber(),dateGenerator.getValidExpirationDate().getYear(), dateGenerator.getValidMonth().getMonth(), DateGenerator.getInvalidOwnerSpecialCharacters(), DateGenerator.getValidCvc());
+        return new CardInfo(DateGenerator.getApprovedCardNumber(), dateGenerator.getValidExpirationDate().getYear(), dateGenerator.getValidMonth().getMonth(), DateGenerator.getInvalidOwnerSpecialCharacters(), DateGenerator.getValidCvc());
     }
 
     public static CardInfo getValidCardNumberWithInvalidOwner123() {
-        return new CardInfo(DateGenerator.getApprovedCardNumber(),dateGenerator.getValidExpirationDate().getYear(), dateGenerator.getValidMonth().getMonth(), DateGenerator.getInvalidOwner123(), DateGenerator.getValidCvc());
+        return new CardInfo(DateGenerator.getApprovedCardNumber(), dateGenerator.getValidExpirationDate().getYear(), dateGenerator.getValidMonth().getMonth(), DateGenerator.getInvalidOwner123(), DateGenerator.getValidCvc());
     }
 
     public static CardInfo getValidCardNumberWithInvalidCvc000() {
         return new CardInfo(DateGenerator.getApprovedCardNumber(), dateGenerator.getValidExpirationDate().getYear(), dateGenerator.getValidMonth().getMonth(), DateGenerator.getValidOwner(), DateGenerator.getInvalidCvc000());
     }
+
     public static CardInfo getValidCardNumberWithInvalidCvc1() {
         return new CardInfo(DateGenerator.getApprovedCardNumber(), dateGenerator.getValidExpirationDate().getYear(), dateGenerator.getValidMonth().getMonth(), DateGenerator.getValidOwner(), DateGenerator.getInvalidCvc1());
     }
@@ -96,12 +101,25 @@ public class DataHelper {
         return new CardInfo(DateGenerator.getApprovedCardNumber(), dateGenerator.getValidExpirationDate().getYear(), dateGenerator.getValidMonth().getMonth(), DateGenerator.getValidOwner(), DateGenerator.getInvalidCvc11());
     }
 
+    public static CardInfo getInvalidOwnerCardLink() {
+        return new CardInfo(DateGenerator.getApprovedCardNumber(), dateGenerator.getValidExpirationDate().getYear(), dateGenerator.getValidMonth().getMonth(), DateGenerator.getInvalidOwnerLink(), DateGenerator.getValidCvc());
+    }
+
     public static CardInfo getInvalidOwnerCard() {
         return new CardInfo(DateGenerator.getApprovedCardNumber(),
                 dateGenerator.getValidExpirationDate().getYear(),
                 dateGenerator.getValidMonth().getMonth(),
                 DateGenerator.getInvalidOwner(),
                 DateGenerator.getValidCvc());
+    }
+
+    @Value
+    public static class CardInfo {
+        String cardNumber;
+        String year;
+        String month;
+        String owner;
+        String cvc;
     }
 
 

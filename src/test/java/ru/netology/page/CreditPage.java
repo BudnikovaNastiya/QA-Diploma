@@ -1,5 +1,7 @@
 package ru.netology.page;
+
 import com.codeborne.selenide.SelenideElement;
+import org.openqa.selenium.By;
 import ru.netology.data.DataHelper;
 
 import static com.codeborne.selenide.Condition.exactText;
@@ -10,20 +12,20 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 
 public class CreditPage {
-    private SelenideElement heading = $$("h3").find(text("Кредит по данным карты"));
-    private SelenideElement cardNumberField = $(byText("Номер карты")).parent().$(".input__control");
-    private SelenideElement monthField = $(byText("Месяц")).parent().$(".input__control");
-    private SelenideElement yearField = $(byText("Год")).parent().$(".input__control");
-    private SelenideElement ownerField = $(byText("Владелец")).parent().$(".input__control");
-    private SelenideElement cvcField = $(byText("CVC/CVV")).parent().$(".input__control");
-    private SelenideElement continueButton = $$("button").find(exactText("Продолжить"));
-    private SelenideElement notificationOK = $(".notification_status_ok");
-    private SelenideElement notificationError = $(".notification_status_error");
-    private SelenideElement cardNumberFieldWarning = $("fieldset > div:nth-child(1) > span > span > span.input__sub");
-    private SelenideElement monthFieldWarning = $("div:nth-child(2) > span > span:nth-child(1) > span > span > span.input__sub");
-    private SelenideElement yearFieldWarning = $("div:nth-child(2) > span > span:nth-child(2) > span > span > span.input__sub");
-    private SelenideElement ownerFieldWarning = $("div:nth-child(3) > span > span:nth-child(1) > span > span > span.input__sub");
-    private SelenideElement cvcFieldWarning = $("div:nth-child(3) > span > span:nth-child(2) > span > span > span.input__sub");
+    private final SelenideElement heading = $$("h3").find(text("Кредит по данным карты"));
+    private final SelenideElement cardNumberField = $(byText("Номер карты")).parent().$(".input__control");
+    private final SelenideElement monthField = $(byText("Месяц")).parent().$(".input__control");
+    private final SelenideElement yearField = $(byText("Год")).parent().$(".input__control");
+    private final SelenideElement ownerField = $(byText("Владелец")).parent().$(".input__control");
+    private final SelenideElement cvcField = $(byText("CVC/CVV")).parent().$(".input__control");
+    private final SelenideElement continueButton = $$("button").find(exactText("Продолжить"));
+    private final SelenideElement notificationOK = $(".notification_status_ok");
+    private final SelenideElement notificationError = $(".notification_status_error");
+    private final SelenideElement cardNumberFieldWarning = $(By.xpath("//span[@class='input__sub' and preceding-sibling::span[contains(text(), 'Номер карты')]]"));
+    private final SelenideElement monthFieldWarning = $(By.xpath("//span[@class='input__sub' and preceding-sibling::span[contains(text(), 'Месяц')]]"));
+    private final SelenideElement yearFieldWarning = $(By.xpath("//span[@class='input__sub' and preceding-sibling::span[contains(text(), 'Год')]]"));
+    private final SelenideElement ownerFieldWarning = $(By.xpath("//span[@class='input__sub' and preceding-sibling::span[contains(text(), 'Владелец')]]"));
+    private final SelenideElement cvcFieldWarning = $(By.xpath("//span[@class='input__sub' and preceding-sibling::span[contains(text(), 'CVC/CVV')]]"));
 
     public CreditPage() {
         heading.shouldBe(visible);

@@ -19,14 +19,6 @@ public class TestCreditCard {
 
     DashboardPage dashboardPage;
 
-    @BeforeEach
-    void setup() {
-        open("http://localhost:8080");
-        dashboardPage = open("http://localhost:8080", DashboardPage.class);
-        Selenide.clearBrowserCookies();
-        Selenide.clearBrowserLocalStorage();
-    }
-
     @BeforeAll
     static void setUpAll() {
         SelenideLogger.addListener("allure", new AllureSelenide());
@@ -36,6 +28,14 @@ public class TestCreditCard {
     static void tearDownAll() {
         SelenideLogger.removeListener("allure");
         DbHelper.cleanDb();
+    }
+
+    @BeforeEach
+    void setup() {
+        open("http://localhost:8080");
+        dashboardPage = open("http://localhost:8080", DashboardPage.class);
+        Selenide.clearBrowserCookies();
+        Selenide.clearBrowserLocalStorage();
     }
 
     @Test
@@ -65,6 +65,15 @@ public class TestCreditCard {
         creditPage.enterCardInfo(invalidCardInformation);
         creditPage.checkInvalidCardNumber();
     }
+
+    @Test
+    void shouldPayByCreditCardWithInvalidNumber43() {
+        val creditPage = dashboardPage.payByCreditCard();
+        val invalidCardInformation43 = DataHelper.getInvalidCardInformation43();
+        creditPage.enterCardInfo(invalidCardInformation43);
+        creditPage.checkInvalidCardNumber();
+    }
+
 
     @Test
     void shouldPayByCreditCardWithExpiredYear() {
@@ -107,7 +116,7 @@ public class TestCreditCard {
         val creditPage = dashboardPage.payByCreditCard();
         val emptyNumberCardInformation = DataHelper.getEmptyNumberCardInformation();
         creditPage.enterCardInfo(emptyNumberCardInformation);
-        creditPage.checkEmptyYearFieldMessage();
+        creditPage.checkEmptyCardNumberFieldMessage();
     }
 
     @Test
@@ -151,12 +160,29 @@ public class TestCreditCard {
     }
 
     @Test
+    void shouldPayByCreditCardWithInvalidOwnerLink() {
+        val creditPage = dashboardPage.payByCreditCard();
+        val invalidOwnerLink = DataHelper.getInvalidOwnerCardLink();
+        creditPage.enterCardInfo(invalidOwnerLink);
+        creditPage.checkInvalidOwner();
+    }
+
+    @Test
     void shouldPayByCreditCardWithValidCardNumberAndInvalidYear0() {
         val creditPage = dashboardPage.payByCreditCard();
         val validCardNumberWithInvalidYear0 = DataHelper.getValidCardNumberWithInvalidYear0();
         creditPage.enterCardInfo(validCardNumberWithInvalidYear0);
         creditPage.checkInvalidYear();
     }
+
+    @Test
+    void shouldPayByCreditCardWithValidCardNumberAndInvalidYear00() {
+        val creditPage = dashboardPage.payByCreditCard();
+        val validCardNumberWithInvalidYear00 = DataHelper.getValidCardNumberWithInvalidYear00();
+        creditPage.enterCardInfo(validCardNumberWithInvalidYear00);
+        creditPage.checkInvalidYear();
+    }
+
     @Test
     void shouldPayByCreditCardWithValidCardNumberAndInvalidMonth13() {
         val creditPage = dashboardPage.payByCreditCard();
@@ -164,6 +190,7 @@ public class TestCreditCard {
         creditPage.enterCardInfo(validCardNumberInvalidMonth13);
         creditPage.checkInvalidMonth();
     }
+
     @Test
     void shouldPayByCreditCardWithValidCardNumberAndInvalidMonth0() {
         val creditPage = dashboardPage.payByCreditCard();
@@ -179,6 +206,7 @@ public class TestCreditCard {
         creditPage.enterCardInfo(validCardNumberInvalidMonth00);
         creditPage.checkInvalidMonth();
     }
+
     @Test
     void shouldPayByCreditCardWithValidCardNumberAndInvalidOtherOwner() {
         val creditPage = dashboardPage.payByCreditCard();

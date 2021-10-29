@@ -25,6 +25,10 @@ public class DateGenerator {
         return "4444 4444 4444 444";
     }
 
+    protected static String getInvalidCardNumber43() {
+        return "4444 4444 4444 4443";
+    }
+
     protected static String getValidOwner() {
         Faker faker = new Faker(new Locale("en"));
         return faker.name().fullName();
@@ -35,9 +39,18 @@ public class DateGenerator {
         return faker.name().fullName();
     }
 
-    protected static String getInvalidOwner123() { return "123"; }
+    protected static String getInvalidOwner123() {
+        return "123";
+    }
 
-    protected static String getInvalidOwnerSpecialCharacters() { return "!@#"; }
+    protected static String getInvalidOwnerLink() {
+        return "https://github.com/";
+    }
+
+
+    protected static String getInvalidOwnerSpecialCharacters() {
+        return "!@#";
+    }
 
     protected static String getValidCvc() {
         return "111";
@@ -53,11 +66,6 @@ public class DateGenerator {
 
     protected static String getInvalidCvc1() {
         return "1";
-    }
-
-    @Value
-    protected static class Year {
-        String year;
     }
 
     protected Year getCurrentYear() {
@@ -80,13 +88,12 @@ public class DateGenerator {
         return new Year(yearFormatter.format(newYear));
     }
 
-    protected Year getInvalidYear() {
+    protected Year getInvalidYear0() {
         return new Year("0");
     }
 
-    @Value
-    protected static class Month {
-        String month;
+    protected Year getInvalidYear00() {
+        return new Year("00");
     }
 
     protected Month getValidMonth() {
@@ -102,10 +109,22 @@ public class DateGenerator {
     protected Month getInvalidMonth13() {
         return new Month("13");
     }
+
     protected Month getInvalidMonth0() {
         return new Month("0");
     }
+
     protected Month getInvalidMonth00() {
         return new Month("00");
+    }
+
+    @Value
+    protected static class Year {
+        String year;
+    }
+
+    @Value
+    protected static class Month {
+        String month;
     }
 }

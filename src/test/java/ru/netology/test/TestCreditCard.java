@@ -74,6 +74,37 @@ public class TestCreditCard {
         creditPage.checkInvalidCardNumber();
     }
 
+    @Test
+    void shouldPayByCreditCardWithExpiredMonth() {
+        val creditPage = dashboardPage.payByCreditCard();
+        val expiredMonth = DataHelper.getExpiredMonthCardInformation();
+        creditPage.enterCardInfo(expiredMonth);
+        creditPage.checkExpiredMonthMessage();
+    }
+
+    @Test
+    void shouldPayByCreditCardWithValidCardNumberAndInvalidMonth13() {
+        val creditPage = dashboardPage.payByCreditCard();
+        val validCardNumberInvalidMonth13 = DataHelper.getValidCardNumberInvalidMonth13();
+        creditPage.enterCardInfo(validCardNumberInvalidMonth13);
+        creditPage.checkInvalidMonth();
+    }
+
+    @Test
+    void shouldPayByCreditCardWithValidCardNumberAndInvalidMonth0() {
+        val creditPage = dashboardPage.payByCreditCard();
+        val validCardNumberInvalidMonth0 = DataHelper.getValidCardNumberInvalidMonth0();
+        creditPage.enterCardInfo(validCardNumberInvalidMonth0);
+        creditPage.checkInvalidMonth();
+    }
+
+    @Test
+    void shouldPayByCreditCardWithValidCardNumberAndInvalidMonth00() {
+        val creditPage = dashboardPage.payByCreditCard();
+        val validCardNumberInvalidMonth00 = DataHelper.getValidCardNumberInvalidMonth00();
+        creditPage.enterCardInfo(validCardNumberInvalidMonth00);
+        creditPage.checkInvalidMonth();
+    }
 
     @Test
     void shouldPayByCreditCardWithExpiredYear() {
@@ -81,6 +112,22 @@ public class TestCreditCard {
         val expiredYearCardInformation = DataHelper.getExpiredYearCardInformation();
         creditPage.enterCardInfo(expiredYearCardInformation);
         creditPage.checkExpiredYearMessage();
+    }
+
+    @Test
+    void shouldPayByCreditCardWithValidCardNumberAndInvalidYear0() {
+        val creditPage = dashboardPage.payByCreditCard();
+        val validCardNumberWithInvalidYear0 = DataHelper.getValidCardNumberWithInvalidYear0();
+        creditPage.enterCardInfo(validCardNumberWithInvalidYear0);
+        creditPage.checkInvalidYear();
+    }
+
+    @Test
+    void shouldPayByCreditCardWithValidCardNumberAndInvalidYear00() {
+        val creditPage = dashboardPage.payByCreditCard();
+        val validCardNumberWithInvalidYear00 = DataHelper.getValidCardNumberWithInvalidYear00();
+        creditPage.enterCardInfo(validCardNumberWithInvalidYear00);
+        creditPage.checkInvalidExpirationDate();
     }
 
     @Test
@@ -92,11 +139,59 @@ public class TestCreditCard {
     }
 
     @Test
-    void shouldPayByCreditCardWithExpiredMonth() {
+    void shouldPayByCreditCardWithValidCardNumberAndInvalidOtherOwner() {
         val creditPage = dashboardPage.payByCreditCard();
-        val expiredMonth = DataHelper.getExpiredMonthCardInformation();
-        creditPage.enterCardInfo(expiredMonth);
-        creditPage.checkExpiredMonthMessage();
+        val validCardNumberWithInvalidOwner = DataHelper.getValidCardNumberWithInvalidOwner();
+        creditPage.enterCardInfo(validCardNumberWithInvalidOwner);
+        creditPage.checkInvalidOwner();
+    }
+
+    @Test
+    void shouldPayByCreditCardWithValidCardNumberAndInvalidOtherOwner123() {
+        val creditPage = dashboardPage.payByCreditCard();
+        val validCardNumberWithInvalidOwner123 = DataHelper.getValidCardNumberWithInvalidOwner123();
+        creditPage.enterCardInfo(validCardNumberWithInvalidOwner123);
+        creditPage.checkInvalidOwner();
+    }
+
+    @Test
+    void shouldPayByCreditCardWithValidCardNumberAndInvalidOtherOwnerSpecialCharacters() {
+        val creditPage = dashboardPage.payByCreditCard();
+        val validCardNumberWithInvalidOwnerSpecialCharacters = DataHelper.getValidCardNumberWithInvalidOwnerSpecialCharacters();
+        creditPage.enterCardInfo(validCardNumberWithInvalidOwnerSpecialCharacters);
+        creditPage.checkInvalidOwner();
+    }
+
+    @Test
+    void shouldPayByCreditCardWithInvalidOwnerLink() {
+        val creditPage = dashboardPage.payByCreditCard();
+        val invalidOwnerLink = DataHelper.getInvalidOwnerCardLink();
+        creditPage.enterCardInfo(invalidOwnerLink);
+        creditPage.checkInvalidOwner();
+    }
+
+    @Test
+    void shouldPayByCreditCardWithValidCardNumberAndInvalidCvc000() {
+        val creditPage = dashboardPage.payByCreditCard();
+        val validCardNumberWithInvalidCvc000 = DataHelper.getValidCardNumberWithInvalidCvc000();
+        creditPage.enterCardInfo(validCardNumberWithInvalidCvc000);
+        creditPage.checkInvalidCvc();
+    }
+
+    @Test
+    void shouldPayByCreditCardWithValidCardNumberAndInvalidCvc1() {
+        val creditPage = dashboardPage.payByCreditCard();
+        val validCardNumberWithInvalidCvc1 = DataHelper.getValidCardNumberWithInvalidCvc1();
+        creditPage.enterCardInfo(validCardNumberWithInvalidCvc1);
+        creditPage.checkInvalidCvc();
+    }
+
+    @Test
+    void shouldPayByCreditCardWithValidCardNumberAndInvalidCvc11() {
+        val creditPage = dashboardPage.payByCreditCard();
+        val validCardNumberWithInvalidCvc11 = DataHelper.getValidCardNumberWithInvalidCvc11();
+        creditPage.enterCardInfo(validCardNumberWithInvalidCvc11);
+        creditPage.checkInvalidCvc();
     }
 
     @Test
@@ -151,107 +246,4 @@ public class TestCreditCard {
         creditPage.checkEmptyCvcFieldMessage();
     }
 
-    @Test
-    void shouldPayByCreditCardWithInvalidOwner() {
-        val creditPage = dashboardPage.payByCreditCard();
-        val invalidOwner = DataHelper.getInvalidOwnerCard();
-        creditPage.enterCardInfo(invalidOwner);
-        creditPage.checkInvalidOwner();
-    }
-
-    @Test
-    void shouldPayByCreditCardWithInvalidOwnerLink() {
-        val creditPage = dashboardPage.payByCreditCard();
-        val invalidOwnerLink = DataHelper.getInvalidOwnerCardLink();
-        creditPage.enterCardInfo(invalidOwnerLink);
-        creditPage.checkInvalidOwner();
-    }
-
-    @Test
-    void shouldPayByCreditCardWithValidCardNumberAndInvalidYear0() {
-        val creditPage = dashboardPage.payByCreditCard();
-        val validCardNumberWithInvalidYear0 = DataHelper.getValidCardNumberWithInvalidYear0();
-        creditPage.enterCardInfo(validCardNumberWithInvalidYear0);
-        creditPage.checkInvalidYear();
-    }
-
-    @Test
-    void shouldPayByCreditCardWithValidCardNumberAndInvalidYear00() {
-        val creditPage = dashboardPage.payByCreditCard();
-        val validCardNumberWithInvalidYear00 = DataHelper.getValidCardNumberWithInvalidYear00();
-        creditPage.enterCardInfo(validCardNumberWithInvalidYear00);
-        creditPage.checkInvalidYear();
-    }
-
-    @Test
-    void shouldPayByCreditCardWithValidCardNumberAndInvalidMonth13() {
-        val creditPage = dashboardPage.payByCreditCard();
-        val validCardNumberInvalidMonth13 = DataHelper.getValidCardNumberInvalidMonth13();
-        creditPage.enterCardInfo(validCardNumberInvalidMonth13);
-        creditPage.checkInvalidMonth();
-    }
-
-    @Test
-    void shouldPayByCreditCardWithValidCardNumberAndInvalidMonth0() {
-        val creditPage = dashboardPage.payByCreditCard();
-        val validCardNumberInvalidMonth0 = DataHelper.getValidCardNumberInvalidMonth0();
-        creditPage.enterCardInfo(validCardNumberInvalidMonth0);
-        creditPage.checkInvalidMonth();
-    }
-
-    @Test
-    void shouldPayByCreditCardWithValidCardNumberAndInvalidMonth00() {
-        val creditPage = dashboardPage.payByCreditCard();
-        val validCardNumberInvalidMonth00 = DataHelper.getValidCardNumberInvalidMonth00();
-        creditPage.enterCardInfo(validCardNumberInvalidMonth00);
-        creditPage.checkInvalidMonth();
-    }
-
-    @Test
-    void shouldPayByCreditCardWithValidCardNumberAndInvalidOtherOwner() {
-        val creditPage = dashboardPage.payByCreditCard();
-        val validCardNumberWithInvalidOwner = DataHelper.getValidCardNumberWithInvalidOwner();
-        creditPage.enterCardInfo(validCardNumberWithInvalidOwner);
-        creditPage.checkInvalidOwner();
-    }
-
-    @Test
-    void shouldPayByCreditCardWithValidCardNumberAndInvalidOtherOwner123() {
-        val creditPage = dashboardPage.payByCreditCard();
-        val validCardNumberWithInvalidOwner123 = DataHelper.getValidCardNumberWithInvalidOwner123();
-        creditPage.enterCardInfo(validCardNumberWithInvalidOwner123);
-        creditPage.checkInvalidOwner();
-    }
-
-    @Test
-    void shouldPayByCreditCardWithValidCardNumberAndInvalidOtherOwnerSpecialCharacters() {
-        val creditPage = dashboardPage.payByCreditCard();
-        val validCardNumberWithInvalidOwnerSpecialCharacters = DataHelper.getValidCardNumberWithInvalidOwnerSpecialCharacters();
-        creditPage.enterCardInfo(validCardNumberWithInvalidOwnerSpecialCharacters);
-        creditPage.checkInvalidOwner();
-    }
-
-    @Test
-    void shouldPayByCreditCardWithValidCardNumberAndInvalidCvc000() {
-        val creditPage = dashboardPage.payByCreditCard();
-        val validCardNumberWithInvalidCvc000 = DataHelper.getValidCardNumberWithInvalidCvc000();
-        creditPage.enterCardInfo(validCardNumberWithInvalidCvc000);
-        creditPage.checkInvalidCvc();
-    }
-
-    @Test
-    void shouldPayByCreditCardWithValidCardNumberAndInvalidCvc1() {
-        val creditPage = dashboardPage.payByCreditCard();
-        val validCardNumberWithInvalidCvc1 = DataHelper.getValidCardNumberWithInvalidCvc1();
-        creditPage.enterCardInfo(validCardNumberWithInvalidCvc1);
-        creditPage.checkInvalidCvc();
-    }
-
-    @Test
-    void shouldPayByCreditCardWithValidCardNumberAndInvalidCvc11() {
-        val creditPage = dashboardPage.payByCreditCard();
-        val validCardNumberWithInvalidCvc11 = DataHelper.getValidCardNumberWithInvalidCvc11();
-        creditPage.enterCardInfo(validCardNumberWithInvalidCvc11);
-        creditPage.checkInvalidCvc();
-    }
 }

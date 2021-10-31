@@ -84,7 +84,7 @@ public class DateGenerator {
     }
 
     protected Year getInvalidExpirationDate() {
-        LocalDate newYear = today.plusYears(6);
+        LocalDate newYear = today.plusYears(5);
         return new Year(yearFormatter.format(newYear));
     }
 

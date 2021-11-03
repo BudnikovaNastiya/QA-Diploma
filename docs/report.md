@@ -13,13 +13,17 @@
 
 Общее количество тест-кейсов - 50 (4 позитивных, 46 негативных)
 
-**% успешных/неуспешных:** 52% / 48%
+**% успешных/неуспешных:** 56% / 44%
 
   На скриншотах ниже представлены отчеты Allure по итогам тестирования:
-![Allure Report 2021-10-31 17-03-29.png](Allure Report 2021-10-31 17-03-29.png)
-  ![Allure Report 2021-10-31 19-50-05.png](Allure Report 2021-10-31 19-50-05.png)
-  ![Allure Report 2021-10-31 19-50-40.png](Allure Report 2021-10-31 19-50-40.png)
-  ![Allure Report 2021-10-31 19-51-43.png](Allure Report 2021-10-31 19-51-43.png)
+
+![Allure Report 2021-11-03 15-10-50.png](Allure Report 2021-11-03 15-10-50.png)
+
+![Allure Report 2021-11-03 15-11-47.png](Allure Report 2021-11-03 15-11-47.png)
+
+![Allure Report 2021-11-03 15-12-29.png](Allure Report 2021-11-03 15-12-29.png)
+
+![Allure Report 2021-11-03 15-13-04.png](Allure Report 2021-11-03 15-13-04.png)
 
 ### Найденные дефекты
 

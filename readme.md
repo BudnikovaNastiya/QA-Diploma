@@ -28,14 +28,14 @@
 - для запуска контейнеров с MySql, PostgreSQL и Node.js использовать команду `docker-compose up -d --build` (необходим установленный Docker);
 - запуск приложения:
   - для запуска под MySQL перейти в каталог /artifacts и использовать команду
-`java -Dspring.datasource.url=jdbc:mysql://localhost:3306/app -jar aqa-shop.jar` 
+`java "-Dspring.datasource.url=jdbc:mysql://localhost:3306/app" -jar aqa-shop.jar` 
    - для запуска под PostgreSQL в каталог /artifacts использовать команду
-`java -Dspring.datasource.url=jdbc:postgresql://localhost:5432/app -jar aqa-shop.jar`
+`java "-Dspring.datasource.url=jdbc:postgresql://localhost:5432/app" -jar aqa-shop.jar`
 - запуск тестов (Allure):
   - для запуска под MySQL использовать команду из корневой директории
-`gradlew -Ddb.url=jdbc:mysql://localhost:3306/app clean test` 
+`./gradlew -Ddb.url=jdbc:mysql://localhost:3306/app clean test` 
   - для запуска под PostgreSQL использовать команду из корневой директории
-`gradlew -Ddb.url=jdbc:postgresql://localhost:5432/app clean test`
+`./gradlew -Ddb.url=jdbc:postgresql://localhost:5432/app clean test`
     
 - для получения отчета (Allure) использовать команду `gradlew allureServe`
 - Можно сгенерировать файлы отчетов командой `gradlew allureReport` (файлы будут помещены в каталог `./build/reports/allure-report)`, в каталоге `./build/reports/tests/test` находятся отчеты, сгенерированные Gradle.

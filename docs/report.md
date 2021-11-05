@@ -17,13 +17,13 @@
 
   На скриншотах ниже представлены отчеты Allure по итогам тестирования:
 
-![Allure Report 2021-11-03 15-10-50.png](Allure Report 2021-11-03 15-10-50.png)
+![Allure Report 2021-11-03 15-10-50.png](https://github.com/BudnikovaNastiya/QA-Diploma/blob/master/docs/Allure%20Report%202021-11-03%2015-10-50.png)
 
-![Allure Report 2021-11-03 15-11-47.png](Allure Report 2021-11-03 15-11-47.png)
+![Allure Report 2021-11-03 15-11-47.png](https://github.com/BudnikovaNastiya/QA-Diploma/blob/master/docs/Allure%20Report%202021-11-03%2015-11-47.png)
 
-![Allure Report 2021-11-03 15-12-29.png](Allure Report 2021-11-03 15-12-29.png)
+![Allure Report 2021-11-03 15-12-29.png](https://github.com/BudnikovaNastiya/QA-Diploma/blob/master/docs/Allure%20Report%202021-11-03%2015-12-29.png)
 
-![Allure Report 2021-11-03 15-13-04.png](Allure Report 2021-11-03 15-13-04.png)
+![Allure Report 2021-11-03 15-13-04.png](https://github.com/BudnikovaNastiya/QA-Diploma/blob/master/docs/Allure%20Report%202021-11-03%2015-13-04.png)
 
 ### Найденные дефекты
 
